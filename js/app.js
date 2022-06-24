@@ -1,4 +1,4 @@
-let posts=[ ];
+let posts=[];
 
 const likedPostsId = [];
 const reportedPostsId = [];
@@ -27,10 +27,12 @@ const reportPost = (id) => {
 };
 
 const displayContent = (text) => {
-    return text.length < 30 ? 'text' : text.slice(0, 30) + "<span class='fw-bold'>... read more</span>";
+  console.log(text.length)
+    return text.length < 30 ? `${text}` : text.slice(0, 30) + "<span class='fw-bold'>... read more</span>";
 };
 
 const switchTab = (id) => {
+  // console.log(id)
     if (id === "posts") {
         document.getElementById( "posts" ).style.display = "grid";
         document.getElementById( "liked" ).style.display = "none";
@@ -51,7 +53,7 @@ const switchTab = (id) => {
 };
 
 const createPost = (post) => {
-  console.log(post)
+  // console.log(post)
     const {image, userImage} = post;
     const div = document.createElement( "article" );
     div.classList.add( "post" );
@@ -138,6 +140,7 @@ const showPosts = (posts) => {
     productsContainer.innerHTML = "";
 
     posts.forEach((post) => {
+      // console.log(post)
         const div = createPost(post);
         productsContainer.appendChild(div);
     });
@@ -145,6 +148,7 @@ const showPosts = (posts) => {
 
 const displayLikedPosts = () => {
     const likedPosts = getLikedPosts();
+    // console.log(likedPosts)
     likedPosts.forEach((post) => {
         const div = createPost(post);
         document.getElementById( "liked" ).appendChild(div);
@@ -153,7 +157,7 @@ const displayLikedPosts = () => {
 
 const displayReportedPosts = () => {
     const reportedPosts = getReportedPosts();
-    posts.forEach((post) => {
+    reportedPosts.forEach((post) => {
         const div = createPost(post);
         document.getElementById( "reported" ).appendChild(div);
     });
