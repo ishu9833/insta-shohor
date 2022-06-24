@@ -27,7 +27,6 @@ const reportPost = (id) => {
 };
 
 const displayContent = (text) => {
-  console.log(text.length)
     return text.length < 30 ? `${text}` : text.slice(0, 30) + "<span class='fw-bold'>... read more</span>";
 };
 
@@ -147,6 +146,7 @@ const showPosts = (posts) => {
 };
 
 const displayLikedPosts = () => {
+  document.getElementById( "liked" ).innerHTML = ""
     const likedPosts = getLikedPosts();
     // console.log(likedPosts)
     likedPosts.forEach((post) => {
@@ -156,6 +156,7 @@ const displayLikedPosts = () => {
 };
 
 const displayReportedPosts = () => {
+  document.getElementById( "reported" ).innerHTML = ""
     const reportedPosts = getReportedPosts();
     reportedPosts.forEach((post) => {
         const div = createPost(post);
